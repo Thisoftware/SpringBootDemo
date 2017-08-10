@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>登录页面_AmaAdmin后台管理系统模板</title>
+<link rel="stylesheet" href="/static/css/style.default.css" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/user.js"></script>
+</head>
+
+<body class="loginpage">
+    <input type="text" style="display:none" id="nouseloginflag"></input>
+	<div class="loginbox">
+    	<div class="loginboxinner">
+        	
+            <div class="logo">
+            	<h1 class="logo"><span>USER-CENTER</span></h1>
+				<span class="slogan">后台管理系统</span>
+            </div><!--logo-->
+            
+            <br clear="all" /><br />
+            
+            <div class="nousername">
+				<div class="loginmsg">用户名不能为空.</div>
+            </div><!--nousername-->
+            
+            <div class="nopassword">
+				<div class="loginmsg">密码不能为空.</div>
+                <div class="loginf">
+                    <div class="thumb"><img alt="" src="/static/images/avatar1.png" /></div>
+                    <div class="userlogged">
+                        <h4></h4>
+                        <a href="login.html">Not <span></span>?</a> 
+                    </div>
+                </div>
+            </div>
+            
+            
+            	
+                <div class="username">
+                	<div class="usernameinner">
+                    	<input type="text" name="username" id="username" />
+                    </div>
+                </div>
+                
+                <div class="password">
+                	<div class="passwordinner">
+                    	<input type="password" name="password" id="password" />
+                    </div>
+                </div>
+                <button onclick="$userjs.login()"> 登录</button>
+                <div class="footer">
+					<span style="background-color:#FF7F00">忘记密码？<a href="/findback" style="background-color:#fff">找回</a></span>
+					&nbsp;&nbsp;<a href="/register" class="register" style="background-color:#fff">注册</a>
+				</div>
+
+        </div>
+    </div>
+</body>
+<scipt>
+
+
+</scipt>
+
+
+</html>

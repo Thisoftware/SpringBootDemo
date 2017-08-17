@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 
     @RequestMapping("login")
-    public String index(Model model){
+    public String login(Model model){
         model.asMap();
         return "login";
+    }
+    @RequestMapping("index")
+    public String index(){
+        return "index";
     }
 
     @RequestMapping("hello")

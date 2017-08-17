@@ -2,6 +2,8 @@ spring:
 #加载静态资源
   mvc:
     static-path-pattern: /static/**
+  thymeleaf:
+      mode: LEGACYHTML5
   datasource:
     name: demo
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8
@@ -26,5 +28,3 @@ spring:
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
-thymeleaf:
-    mode: LEGACYHTML5

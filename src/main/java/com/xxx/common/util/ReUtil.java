@@ -42,7 +42,7 @@ public class ReUtil {
         return reData;
     }
 
-    public static ReData fail(ReCode code,Object data){
+    public static ReData fail(Object data,ReCode code){
         ReData reData = new ReData();
         reData.setCode(code.getCode());
         reData.setMsg(code.getMsg());

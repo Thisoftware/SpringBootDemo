@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <settings>
+      <!-- DTO驼峰命名与表字段下划线命名自动转换 -->
+      <setting name="mapUnderscoreToCamelCase" value="true" />
+   </settings>
+   <plugins>
+      <plugin interceptor="com.demo.boot.core.interceptor.SqlLogInterceptor">
+         <property name="sqlConcat" value="True"/>
+         <property name="sqlThreshold" value="0" />
+      </plugin>
+   </plugins>
+</configuration>

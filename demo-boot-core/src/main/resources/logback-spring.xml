@@ -1,0 +1,71 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<configuration>-->
+
+<!--    <logger name="org.springframework" level="INFO"/>-->
+<!--	<logger name="com.ibatis" level="debug" />-->
+<!--	<logger name="com.demo" level="debug" />-->
+<!--	<logger name="com.demo.boot.core.dao.mapper" level="info" />-->
+
+<!--	&lt;!&ndash; 文件输出格式 &ndash;&gt;-->
+<!--	&lt;!&ndash; -->
+<!--	<property name="FILE_PATH" value="/usr/local/mars/logs" />-->
+<!-- 	&ndash;&gt;-->
+<!-- 	-->
+<!--	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--		<encoder>-->
+<!--			<pattern>${PATTERN}</pattern>-->
+<!--		</encoder>-->
+<!--	</appender>-->
+<!--	-->
+<!--	&lt;!&ndash; 彩色日志依赖的渲染类 &ndash;&gt;-->
+<!--    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>-->
+<!--    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>-->
+<!--    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>-->
+<!--    -->
+<!--    &lt;!&ndash; 配置文件的系统名 &ndash;&gt;-->
+<!--    <springProperty scope="context" name="SYSNAME" source="spring.application.name" defaultValue="demo-boot"/>-->
+<!--    <springProperty scope="context" name="FILE_PATH" source="logfile.path" defaultValue="/usr/local/demo-boot/logs"/>-->
+<!--    -->
+<!--    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %level [${SYSNAME},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{requestId}] [%thread] %class.%method:%line - %msg%n" />    -->
+<!--	-->
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--		&lt;!&ndash; 文件路径 &ndash;&gt;-->
+<!--		<file>${FILE_PATH}/application.log</file>-->
+<!--		<encoder>-->
+<!--			<charset>UTF-8</charset>-->
+<!--			<pattern>${PATTERN}</pattern>-->
+<!--		</encoder>-->
+<!--		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--			&lt;!&ndash;路径&ndash;&gt;-->
+<!--			<fileNamePattern>${FILE_PATH}/logs/info.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>-->
+<!--			&lt;!&ndash;保存的时间（天数）&ndash;&gt;-->
+<!--			<maxHistory>365</maxHistory>-->
+<!--			&lt;!&ndash;日志文件的总大小&ndash;&gt;-->
+<!--			<totalSizeCap>10GB</totalSizeCap>-->
+<!--			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+<!--				<maxFileSize>100MB</maxFileSize>-->
+<!--			</timeBasedFileNamingAndTriggeringPolicy>-->
+<!--		</rollingPolicy>-->
+
+<!--		<layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--			<pattern>${PATTERN}</pattern>-->
+<!--		</layout>-->
+<!--	</appender>-->
+<!--	-->
+<!--    &lt;!&ndash; 控制台输出  &ndash;&gt;-->
+<!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>DEBUG</level>-->
+<!--        </filter>-->
+<!--        <encoder>-->
+<!--            <pattern>${PATTERN}</pattern>-->
+<!--            <charset>utf8</charset>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+<!--    -->
+<!--    <root level="INFO">-->
+<!--        <appender-ref ref="STDOUT" />-->
+<!--        <appender-ref ref="FILE" />-->
+<!--    </root>-->
+
+<!--</configuration>-->

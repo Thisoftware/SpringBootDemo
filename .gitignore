@@ -3,10 +3,8 @@
 /.project
 
 # for idea
-*.iml
-/.idea
-*/target
+**/*.iml
 .idea
 .DS_Store
 .gitattributes
-target
+**/target

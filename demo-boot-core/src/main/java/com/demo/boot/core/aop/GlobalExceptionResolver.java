@@ -24,7 +24,6 @@ public class GlobalExceptionResolver {
 
     @ExceptionHandler(value = Exception.class)
     public ReData<String> exceptionHandler(Exception e){
-        log.error("##异常原因:" + ExceptionUtils.getStackTrace(e));
         ReData<String> reData = new ReData<>();
         reData.setCode(ReCode.FAIL.code());
         if(e instanceof ApiCommonException){
@@ -32,6 +31,7 @@ public class GlobalExceptionResolver {
             reData.setMessage(ex.getMessage());
             return reData;
         }
+        log.error("##异常原因:" + ExceptionUtils.getStackTrace(e));
         if(e instanceof MethodArgumentNotValidException || e instanceof HttpMessageConversionException){
             List<String> args = new ArrayList<>();
             if(e instanceof MethodArgumentNotValidException){

@@ -1,7 +1,7 @@
 server:
   port: 8080
 
-##  ˝æ›‘¥≈‰÷√ ====================================================================
+# data source
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,19 +15,19 @@ spring:
     static-path-pattern: /static/**
   thymeleaf:
     mode: LEGACYHTML5
-## mybatis mapper≈‰÷√============================================================
+# mybatis mapper
 mybatis:
   type-aliases-package: com.demo.boot.core.dao.entity
   mapper-locations: classpath*:mapper/*.xml
   config-location: classpath:/mybatis-config.xml
 
-##log≈‰÷√
+# log
 logging:
   level:
     com.demo.boot.core.dao.mapper: debug
     org.springframework: info
 
-#swagger
+# swagger
 swagger:
   enable: true
 eureka:

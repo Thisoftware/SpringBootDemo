@@ -27,7 +27,7 @@
         <swagger.version>1.5.21</swagger.version>
         <druid.version>1.2.3</druid.version>
         <pageHelper.version>1.2.10</pageHelper.version>
-        <google.version>28.2-jre</google.version>
+        <google.version>29.0-jre</google.version>
         <springfox.swagger2>2.9.2</springfox.swagger2>
     </properties>
 

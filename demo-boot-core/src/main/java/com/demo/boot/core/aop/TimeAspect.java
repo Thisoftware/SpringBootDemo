@@ -67,10 +67,7 @@ public class TimeAspect {
         try {
             if (result instanceof ReData) {
                 ReData<?> response = (ReData<?>) result;
-                Object data = response.getData();
-                if (data != null) {
-                    logger.info("{}.{}:出参:{}", simpleClsName, methodName, JSON.toJSONString(data));
-                }
+                logger.info("{}.{}:出参:{}", simpleClsName, methodName, JSON.toJSONString(response.getData()));
             }
         } catch (Exception e) {
             e.printStackTrace();

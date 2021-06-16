@@ -101,7 +101,7 @@ public class SqlLogInterceptor  implements Interceptor{
             }
         }
 
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         strSqlCost = sqlCost + " ms";
         map.put("sqlruntime", strSqlCost);
         map.put("sqlmethod", sqlId);

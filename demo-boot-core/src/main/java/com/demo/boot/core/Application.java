@@ -1,6 +1,6 @@
 package com.demo.boot.core;
 
-import com.google.common.base.Strings;
+import com.demo.boot.api.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -44,9 +44,9 @@ public class Application {
         return "\n----------------------------------------------------------\n\t" + "Application Service '"
                 + env.getProperty("spring.application.name") + "' is running! Access URLs:\n\t" + "Local: \t\t"
                 + protocol + "://localhost:" + env.getProperty("server.port")
-                + Strings.nullToEmpty(env.getProperty("server.contextPath")) + "\n\t" + "External: \t" + protocol
+                + StringUtil.nullToEmpty(env.getProperty("server.contextPath")) + "\n\t" + "External: \t" + protocol
                 + "://" + hostAddress + ":" + env.getProperty("server.port")
-                + Strings.nullToEmpty(env.getProperty("server.contextPath")) + "\n\t" + "Profile(s): \t["
+                + StringUtil.nullToEmpty(env.getProperty("server.contextPath")) + "\n\t" + "Profile(s): \t["
                 + String.join(",", env.getActiveProfiles())
                 + "]\n----------------------------------------------------------";
     }

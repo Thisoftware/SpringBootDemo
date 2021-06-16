@@ -27,10 +27,3 @@ logging:
   level:
     com.demo.boot.core.dao.mapper: debug
     org.springframework: info
-
-# swagger
-swagger:
-  enable: true
-eureka:
-  instance:
-    status-page-url-path: /swagger-ui.html

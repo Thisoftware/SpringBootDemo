@@ -8,7 +8,8 @@ import java.util.List;
 @Getter
 public enum ErrorCodeEnum {
 
-    REQUEST_PARAM_NULL_KEY("PD.PM.CS.100002", "必传参数为空");
+    REQUEST_PARAM_NULL_KEY("100001", "必传参数为空"),
+    ERROR_CODE_100002("100002", "请重新登录!");
 
     private String code;
     private String message;

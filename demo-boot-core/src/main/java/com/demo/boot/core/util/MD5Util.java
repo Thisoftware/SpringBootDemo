@@ -1,4 +1,4 @@
-package com.demo.boot.api.util;
+package com.demo.boot.core.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

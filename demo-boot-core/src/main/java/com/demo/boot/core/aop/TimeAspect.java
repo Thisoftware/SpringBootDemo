@@ -22,9 +22,9 @@ public class TimeAspect {
 
     // 修正Timer注解的全局唯一限定符
     @Pointcut("@annotation(com.demo.boot.api.annotation.Timer)")
-    private void pointcut() {}
+    private void timer() {}
 
-    @Around("pointcut()")
+    @Around("timer()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         // 获取目标Logger
         Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass());

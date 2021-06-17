@@ -1,6 +1,6 @@
 package disconnection;
 
-import com.demo.boot.api.util.StringUtil;
+import com.demo.boot.core.util.StringUtil;
 import org.junit.Test;
 
 public class CutTest {

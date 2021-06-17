@@ -28,6 +28,7 @@
         <druid.version>1.2.3</druid.version>
         <pageHelper.version>1.2.10</pageHelper.version>
         <springfox.swagger2>2.9.2</springfox.swagger2>
+        <java.jwt>3.10.3</java.jwt>
     </properties>
 
     <modules>
@@ -141,6 +142,16 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java.jwt}</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
     </dependencies>
 

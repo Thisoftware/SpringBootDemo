@@ -1,6 +1,6 @@
 package com.demo.boot.core;
 
-import com.demo.boot.api.util.StringUtil;
+import com.demo.boot.core.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -6,9 +6,9 @@ spring:
     name: demo-boot
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-uf6m6fv56r7apx9g8.mysql.rds.aliyuncs.com:3306/misc?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false&allowMultiQueries=true
-    username: brucexx
-    password: Brucest0078
+    url: jdbc:mysql://localhost?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false&allowMultiQueries=true
+    username: root
+    password: root
     initial-size: 30
     max-active: 100
     max-wait: 60000

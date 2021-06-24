@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
         <fastjson.version>1.2.75</fastjson.version>
-        <mybatis.spring.boot.starter>2.1.4</mybatis.spring.boot.starter>
+        <tk.mybatis.version>2.1.5</tk.mybatis.version>
         <mybatis-generator-maven-plugin.version>1.3.5</mybatis-generator-maven-plugin.version>
         <easyexcel.version>2.2.6</easyexcel.version>
         <swagger.version>1.5.21</swagger.version>
@@ -153,6 +153,12 @@
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
         </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>${tk.mybatis.version}</version>
+        </dependency>
+
     </dependencies>
 
     <!--<profiles>

@@ -30,7 +30,7 @@ import java.util.Objects;
 public class PassVerifyAspect {
 
     // 修正Timer注解的全局唯一限定符
-    @Pointcut("@annotation(com.demo.boot.api.annotation.PassToken)")
+    @Pointcut("@annotation(com.demo.boot.api.annotation.PassVerify)")
     private void passVerify() {}
 
     @Pointcut("execution(* com.demo.boot.core.controller.*Controller.*(..))")
@@ -47,8 +47,8 @@ public class PassVerifyAspect {
         //String methodName = joinPoint.getSignature().getName();
         Method method = joinPoint.getTarget().getClass().getMethod(methodSignature.getName(),methodSignature.getParameterTypes());
         if(method.isAnnotationPresent(PassVerify.class)){
-            PassVerify passToken = method.getAnnotation(PassVerify.class);
-            if(passToken.query()){
+            PassVerify passVerify = method.getAnnotation(PassVerify.class);
+            if(passVerify.query()){
                 return joinPoint.proceed();
             }
         }

@@ -21,4 +21,64 @@
     </if>
   </select>
 
+  <select id="selectCustReportApproveLogs" parameterType="com.demo.boot.api.vo.request.QueryLogRequest" resultType="com.demo.boot.api.vo.response.QueryLogResponse">
+      WITH ALL_DATA AS (
+          SELECT a.remarks, a.update_time, u.user_name,
+              CASE IFNULL(a.status, a.review_status)
+              WHEN 4 THEN '审批通过'
+              WHEN 5 THEN '审批驳回'
+              when 8 then '复核通过'
+              when 9 then '复核不通过'
+              when 10 then '已失效'
+              when 12 then '推送理财师成功'
+              when 13 then '推送理财师失败'
+              when 14 then '推送客户成功'
+              when 15 then '推送客户失败'
+              when 17 then '重新生成'
+              when 11 then 11
+              when 16 then 16
+              END as status,
+              a.bus_id
+          FROM tbl_cust_report_approve_log a
+          LEFT JOIN tbl_sys_user u ON u.user_uid = a.creator_id
+          where 1 = 1
+          <if test="status != null and status != ''">
+              and a.status in
+              <foreach collection="status.split(',')" item="item" open="(" separator="," close=")">
+                #{item,jdbcType=VARCHAR}
+              </foreach>
+          </if>
+          <if test="busId != null and busId != ''">
+              and a.bus_id = #{busId,jdbcType=BIGINT}
+          </if>
+      ),
+      STATUS_MSM AS (
+          SELECT IF(length(trim(a.remarks)) > 0,a.remarks,
+                    CASE p.mess_state
+                    WHEN '0' THEN '推送中'
+                    WHEN '1' THEN '推送成功'
+                    WHEN '2' THEN '推送失败' END) as remarks,
+                a.update_time, a.user_name,
+                IF(p.financial_manager_id,
+                    CASE
+                    WHEN p.mess_state = '0' THEN '理财师消息推送中'
+                    WHEN p.mess_state = '1' THEN '推送理财师消息成功'
+                    WHEN p.mess_state = '2' THEN '推送理财师消息失败' END,
+                    CASE
+                    WHEN p.mess_state = '0' THEN '客户消息推送中'
+                    WHEN p.mess_state = '1' THEN '推送客户消息成功'
+                    WHEN p.mess_state = '2' THEN '推送客户消息失败' END) as status
+          FROM ALL_DATA a
+          INNER JOIN tbl_push_recode p
+          on a.bus_id = p.mon_report_id
+          WHERE a.STATUS IN ('11', '16')
+      ),
+      RESULT_DATA AS (
+          SELECT a.remarks, a.update_time, a.user_name, a.status FROM ALL_DATA a WHERE a.status not in ('11', '16')
+          UNION
+          SELECT * FROM STATUS_MSM
+      )
+      SELECT * FROM RESULT_DATA
+  </select>
+
 </mapper>

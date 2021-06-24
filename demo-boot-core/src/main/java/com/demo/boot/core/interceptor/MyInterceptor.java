@@ -67,10 +67,10 @@
 //        }
 //        HandlerMethod handlerMethod = (HandlerMethod) object;
 //        Method method = handlerMethod.getMethod();
-//        //检查是否有passtoken注释，有则跳过认证
+//        //检查是否有passVerify注释，有则跳过认证
 //        if (method.isAnnotationPresent(PassVerify.class)) {
-//            PassVerify passToken = method.getAnnotation(PassVerify.class);
-//            if (passToken.query()) {
+//            PassVerify passVerify = method.getAnnotation(PassVerify.class);
+//            if (passVerify.query()) {
 //                return true;
 //            }
 //        }

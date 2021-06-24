@@ -1,14 +1,11 @@
 package com.demo.boot.core.dao.entity;
 
-import com.demo.boot.api.vo.PageVo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class TblPeReportManageLog extends PageVo {
+public class TblPeReportManageLog{
     private Long id;
 
     private String peReportManageStatus;

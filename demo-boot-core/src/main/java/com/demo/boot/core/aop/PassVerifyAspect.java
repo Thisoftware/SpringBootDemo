@@ -5,7 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.demo.boot.api.annotation.PassToken;
+import com.demo.boot.api.annotation.PassVerify;
 import com.demo.boot.api.constants.RedisKeyConstants;
 import com.demo.boot.api.enums.ErrorCodeEnum;
 import com.demo.boot.api.exception.ApiCommonException;
@@ -27,16 +27,16 @@ import java.util.Objects;
 @Aspect
 @Component
 @Slf4j
-public class PassTokenAspect {
+public class PassVerifyAspect {
 
     // 修正Timer注解的全局唯一限定符
     @Pointcut("@annotation(com.demo.boot.api.annotation.PassToken)")
-    private void passToken() {}
+    private void passVerify() {}
 
     @Pointcut("execution(* com.demo.boot.core.controller.*Controller.*(..))")
     private void controller(){}
 
-    @Around("passToken() || controller()")
+    @Around("passVerify() || controller()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         String token = request.getHeader("token");
@@ -46,8 +46,8 @@ public class PassTokenAspect {
         // 获取目标类方法名称
         //String methodName = joinPoint.getSignature().getName();
         Method method = joinPoint.getTarget().getClass().getMethod(methodSignature.getName(),methodSignature.getParameterTypes());
-        if(method.isAnnotationPresent(PassToken.class)){
-            PassToken passToken = method.getAnnotation(PassToken.class);
+        if(method.isAnnotationPresent(PassVerify.class)){
+            PassVerify passToken = method.getAnnotation(PassVerify.class);
             if(passToken.query()){
                 return joinPoint.proceed();
             }

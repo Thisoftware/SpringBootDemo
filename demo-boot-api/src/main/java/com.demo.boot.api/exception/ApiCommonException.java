@@ -22,6 +22,17 @@ public class ApiCommonException extends Exception{
 
     private ErrorCodeEnum errorCodeEnum;
 
+    public ApiCommonException(String message) {
+        super(message);
+        this.message = message;
+    }
+
+    public ApiCommonException(String code, String message) {
+        super(message);
+        this.code = code;
+        this.message = message;
+    }
+
     public ApiCommonException(ErrorCodeEnum errorCodeEnum) {
         this(errorCodeEnum, errorCodeEnum.getCode(), errorCodeEnum.getMessage());
     }

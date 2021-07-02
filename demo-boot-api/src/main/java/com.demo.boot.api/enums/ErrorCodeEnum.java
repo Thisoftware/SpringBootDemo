@@ -1,5 +1,6 @@
 package com.demo.boot.api.enums;
 
+import com.demo.boot.api.exception.ApiCommonException;
 import lombok.Getter;
 
 import java.text.MessageFormat;
@@ -19,14 +20,14 @@ public enum ErrorCodeEnum {
         this.message = message;
     }
 
-    public static ErrorCodeEnum getErrorCodeByCode(String code) {
+    public static ErrorCodeEnum getErrorCodeByCode(String code) throws ApiCommonException {
         ErrorCodeEnum[] enums = values();
         for (ErrorCodeEnum constant : enums) {
             if (constant.getCode().equals(code)) {
                 return constant;
             }
         }
-        return null;
+        throw new ApiCommonException("No matching constant to " + code);
     }
 
     // 占位符填充

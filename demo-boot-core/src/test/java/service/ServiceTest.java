@@ -1,6 +1,7 @@
 package service;
 
 import com.alibaba.fastjson.JSON;
+import com.demo.boot.api.exception.ApiCommonException;
 import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.BaseTest;
@@ -56,14 +57,28 @@ public class ServiceTest extends BaseTest {
     }
 
     @Test
-    public void testAbstract() throws Exception {
-        MethodExecClient execClient = (MethodExecClient) applicationContext.getBen("aMethodExecClient",MethodExecClient.class);
+    public void testAbstract() throws ApiCommonException {
+        MethodExecClient execClient = (MethodExecClient) applicationContext.getBen("adaMethodExecClient",MethodExecClient.class);
         Map<String,Object> targetService = new HashMap<>();
         targetService.put("a","aService");
         Map<String,Object> method = new HashMap<>();
-        method.put("a","method");
+        method.put("aM","method");
         Map<String,Object> methodExec = new HashMap<>();
-        methodExec.put("a","methodExec");
+        methodExec.put("aME","methodExec");
+        Map<String, Object> response = execClient.exec(targetService, method, methodExec);
+        System.out.println(JSON.toJSONString(response));
+    }
+
+    @Test
+    public void testADBAbstract() throws ApiCommonException {
+        MethodExecClient execClient = (MethodExecClient) applicationContext.getBen("adbMethodExecClient",MethodExecClient.class);
+        Map<String,Object> targetService = new HashMap<>();
+        targetService.put("b","bService");
+        targetService.put("type","bat");
+        Map<String,Object> method = new HashMap<>();
+        method.put("bM","method");
+        Map<String,Object> methodExec = new HashMap<>();
+        methodExec.put("bME","methodExec");
         Map<String, Object> response = execClient.exec(targetService, method, methodExec);
         System.out.println(JSON.toJSONString(response));
     }

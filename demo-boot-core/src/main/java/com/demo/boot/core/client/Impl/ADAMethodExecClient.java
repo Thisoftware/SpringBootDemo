@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Slf4j
-@Component("aMethodExecClient")
-public class AMethodExecClient extends ADispatchMethodExecClient{
+@Component("adaMethodExecClient")
+public class ADAMethodExecClient extends ADispatchMethodExecClient{
 
     @Override
     public Map<String, Object> assembleRequest(Map<String, Object> methodExecute) {
@@ -28,7 +28,8 @@ public class AMethodExecClient extends ADispatchMethodExecClient{
     @Override
     public Map<String, Object> assembleResponse(Map<String, Object> methodExec, Map<String, Object> responseParameters) {
         log.info("this location at AMethodExecClient_response");
-        log.info(JSON.toJSONString(methodExec));
+        log.info("methodExec: {}", JSON.toJSONString(methodExec));
+        log.info("responseParameters: {}", JSON.toJSONString(responseParameters));
         responseParameters.put("response","AMethodExecClient_response");
         return responseParameters;
     }

@@ -21,11 +21,13 @@ public class ADispatchMethodExecClient extends AbstractDispatchMethodExecClient{
 
     @Override
     public Map<String, Object> doExec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> parameters) throws ApiCommonException {
+        log.info("this location at ADispatchMethodExecClient_doExec");
         return null;
     }
 
     @Override
     public Map<String, Object> assembleResponse(Map<String, Object> methodExec, Map<String, Object> responseParameters) {
+        log.info("this location at ADispatchMethodExecClient_assembleResponse");
         return null;
     }
 
@@ -33,5 +35,9 @@ public class ADispatchMethodExecClient extends AbstractDispatchMethodExecClient{
     public void afterCompletion(Map<String, Object> methodExec) {
         log.info("this location at ADispatchMethodExecClient_response");
         log.info(JSON.toJSONString(methodExec));
+    }
+
+    public void handleParam(Map<String, Object> param){
+        param.put("handleParam","end");
     }
 }

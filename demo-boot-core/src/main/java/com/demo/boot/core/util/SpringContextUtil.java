@@ -20,7 +20,7 @@ public class SpringContextUtil implements ApplicationContextAware {
         return applicationContext.getBean(name);
     }
 
-    public Object getBen(String className, Class<MethodExecClient> tClass){
+    public Object getBean(String className, Class<MethodExecClient> tClass){
         return applicationContext.getBean(className,tClass);
     }
 }

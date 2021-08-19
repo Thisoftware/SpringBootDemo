@@ -58,7 +58,7 @@ public class ServiceTest extends BaseTest {
 
     @Test
     public void testAbstract() throws ApiCommonException {
-        MethodExecClient execClient = (MethodExecClient) applicationContext.getBen("adaMethodExecClient",MethodExecClient.class);
+        MethodExecClient execClient = (MethodExecClient) applicationContext.getBean("adaMethodExecClient");
         Map<String,Object> targetService = new HashMap<>();
         targetService.put("a","aService");
         Map<String,Object> method = new HashMap<>();
@@ -71,7 +71,7 @@ public class ServiceTest extends BaseTest {
 
     @Test
     public void testADBAbstract() throws ApiCommonException {
-        MethodExecClient execClient = (MethodExecClient) applicationContext.getBen("adbMethodExecClient",MethodExecClient.class);
+        MethodExecClient execClient = (MethodExecClient) applicationContext.getBean("adbMethodExecClient",MethodExecClient.class);
         Map<String,Object> targetService = new HashMap<>();
         targetService.put("b","bService");
         targetService.put("type","bat");

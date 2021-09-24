@@ -24,14 +24,14 @@ public class GlobalExceptionResolver {
 
     @ExceptionHandler(value = Exception.class)
     public ReData<String> exceptionHandler(Exception e){
+        log.error("##异常原因:" + ExceptionUtils.getStackTrace(e));
         ReData<String> reData = new ReData<>();
-        reData.setCode(ReCode.FAIL.code());
         if(e instanceof ApiCommonException){
             ApiCommonException ex = (ApiCommonException) e;
             reData.setMessage(ex.getMessage());
+            reData.setCode(ex.getCode());
             return reData;
         }
-        log.error("##异常原因:" + ExceptionUtils.getStackTrace(e));
         if(e instanceof MethodArgumentNotValidException || e instanceof HttpMessageConversionException){
             List<String> args = new ArrayList<>();
             if(e instanceof MethodArgumentNotValidException){
@@ -41,8 +41,7 @@ public class GlobalExceptionResolver {
             reData.setCode(ErrorCodeEnum.REQUEST_PARAM_NULL_KEY.getCode());
             reData.setMessage(ErrorCodeEnum.getFillMessageByCode(ErrorCodeEnum.REQUEST_PARAM_NULL_KEY,args));
         } else {
-            ReCode.FAIL.setResponse(reData);
-            reData.setMessage("系统异常，请联系管理员");
+            ReCode.SystemError.setResponse(reData);
         }
         log.info("##异常返回:response={}", JSON.toJSONString(reData));
         return reData;

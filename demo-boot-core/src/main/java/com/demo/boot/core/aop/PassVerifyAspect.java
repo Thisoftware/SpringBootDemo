@@ -9,8 +9,8 @@ import com.demo.boot.api.annotation.PassVerify;
 import com.demo.boot.api.constants.RedisKeyConstants;
 import com.demo.boot.api.enums.ErrorCodeEnum;
 import com.demo.boot.api.exception.ApiCommonException;
-import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -52,7 +52,7 @@ public class PassVerifyAspect {
                 return joinPoint.proceed();
             }
         }
-        if (token == null) {
+        if (StringUtils.isBlank(token)) {
             throw new ApiCommonException(ErrorCodeEnum.ERROR_CODE_100002);
         }
 //        String loginName;

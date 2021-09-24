@@ -28,9 +28,19 @@ public class ReData<T> implements Serializable{
     @JsonProperty("total")
     private long total;
 
-    public void setData(T data) {
+    public void ok() {
         setCode(ReCode.SUCCESS.code());
         setMessage(ReCode.SUCCESS.message());
+    }
+
+    public void setData(T data) {
+        ok();
         this.data = data;
+    }
+
+    public void pageData(T data, long total){
+        ok();
+        this.data = data;
+        this.total = total;
     }
 }

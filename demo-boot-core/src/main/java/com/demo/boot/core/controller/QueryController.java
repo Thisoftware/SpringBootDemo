@@ -40,8 +40,7 @@ public class QueryController {
         }
         ReData<List<TblPeReportManageLog>> response = new ReData<>();
         PageInfo<TblPeReportManageLog> pageInfo = testService.queryLog(request);
-        response.setData(pageInfo.getList());
-        response.setTotal(pageInfo.getTotal());
+        response.pageData(pageInfo.getList(), pageInfo.getTotal());
         return response;
     }
 }

@@ -6,7 +6,9 @@ import com.demo.boot.api.enums.ErrorCodeEnum;
 import com.demo.boot.api.exception.ApiCommonException;
 import com.demo.boot.api.path.BaseUrl;
 import com.demo.boot.api.vo.request.QueryLogRequest;
+import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
+import com.demo.boot.core.dao.source2.entity.BaseResource;
 import com.demo.boot.core.service.TestService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -42,5 +44,24 @@ public class QueryController {
         PageInfo<TblPeReportManageLog> pageInfo = testService.queryLog(request);
         response.pageData(pageInfo.getList(), pageInfo.getTotal());
         return response;
+    }
+
+    @ApiOperation(value = "字典列表查询", notes = "字典列表查询")
+    @PostMapping(value = BaseUrl.QUERY_RESOURCE)
+    @Timer
+    public ReData<List<BaseResource>> queryResource(@RequestBody QueryLogRequest request){
+        ReData<List<BaseResource>> reData = new ReData<>();
+        PageInfo<BaseResource> pageInfo = testService.queryResource(request);
+        reData.pageData(pageInfo.getList(), pageInfo.getTotal());
+        return reData;
+    }
+
+    @ApiOperation(value = "客户查询", notes = "客户查询")
+    @PostMapping(value = BaseUrl.QUERY_CUS_REPORT)
+    @Timer
+    public ReData<List<QueryLogResponse>> queryCusReportLog(@RequestBody QueryLogRequest request){
+        ReData<List<QueryLogResponse>> reData = new ReData<>();
+        reData.setData(testService.queryCusReportLog(request));
+        return reData;
     }
 }

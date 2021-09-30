@@ -6,4 +6,8 @@ public interface BaseUrl {
 
     String QUERY_LOG = "queryLog";
 
+    String QUERY_RESOURCE = "queryResource";
+
+    String QUERY_CUS_REPORT = "queryCusReport";
+
 }

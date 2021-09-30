@@ -32,7 +32,8 @@ mybatis:
 # log
 logging:
   level:
-    com.demo.boot.core.dao.mapper: debug
+    com.demo.boot.core.dao.source1.mapper: debug
+    com.demo.boot.core.dao.source2.mapper: debug
     org.springframework: info
 
 decrypt:

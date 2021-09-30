@@ -1,10 +1,10 @@
 package com.demo.boot.core.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
 import com.demo.boot.core.dao.source1.mapper.TblPeReportManageLogMapper;
+import com.demo.boot.core.dao.source2.entity.BaseResource;
 import com.demo.boot.core.dao.source2.mapper.DemoMapper;
 import com.demo.boot.core.service.TestService;
 import com.github.pagehelper.PageHelper;
@@ -27,13 +27,19 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public PageInfo<TblPeReportManageLog> queryLog(QueryLogRequest request) {
-        log.info(JSON.toJSONString(demoMapper.selectBaseResource().size()));
         PageHelper.startPage(request.getPageIndex(),request.getPageSize());
         return new PageInfo<>(manageLogMapper.selectManageLog(request.getId()));
     }
 
     @Override
-    public List<QueryLogResponse> queryCustReportLog(QueryLogRequest request) {
+    public PageInfo<BaseResource> queryResource(QueryLogRequest request) {
+        PageHelper.startPage(request.getPageIndex(),request.getPageSize());
+        return new PageInfo<>(demoMapper.selectBaseResource());
+    }
+
+    @Override
+    public List<QueryLogResponse> queryCusReportLog(QueryLogRequest request) {
+        log.info("资源数据有" + demoMapper.selectBaseResource().size() + "条..");
         return manageLogMapper.selectCustReportApproveLogs(request);
     }
 }

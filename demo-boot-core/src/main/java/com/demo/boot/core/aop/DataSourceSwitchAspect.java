@@ -34,4 +34,8 @@ public class DataSourceSwitchAspect {
         DataSourceContextHolder.setDataSourceType(DataSourceTypeEnum.DATA_SOURCE2);
     }
 
+//    @After("source1Aspect() || source2Aspect()")
+//    public void afterSwitchDataSource(){
+//        DataSourceContextHolder.clearDataSourceType();
+//    }
 }

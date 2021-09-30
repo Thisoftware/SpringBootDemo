@@ -38,7 +38,7 @@ public class ServiceTest extends BaseTest {
 
     @Test
     public void testMapper(){
-        List<QueryLogResponse> responses = testService.queryCustReportLog(new QueryLogRequest()
+        List<QueryLogResponse> responses = testService.queryCusReportLog(new QueryLogRequest()
                 .setBusId(545L)
                 .setStatus("11,16"));
         System.out.println(responses);

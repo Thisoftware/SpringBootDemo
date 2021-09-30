@@ -1,25 +1,32 @@
 server:
-  port: 8080
+  port: ${server.port}
 
 spring:
-  application:
-    name: demo-boot
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false&allowMultiQueries=true
-    username: root
-    password: root
-    initial-size: 30
-    max-active: 100
-    max-wait: 60000
+    druid:
+      source1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/misc?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai&useInformationSchema=true&allowPublicKeyRetrieval=true&autoReconnect=true
+        username: ${spring.datasource.druid.source1.username}
+        password: ${spring.datasource.druid.source1.password}
+        initial-size: 30
+        max-active: 100
+        max-wait: 60000
+      source2:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3401/gowin_t3?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai&useInformationSchema=true&allowPublicKeyRetrieval=true&autoReconnect=true
+        username: ${spring.datasource.druid.source2.username}
+        password: ${spring.datasource.druid.source2.password}
+        initial-size: 30
+        max-active: 100
+        max-wait: 60000
   mvc:
     static-path-pattern: /static/**
   thymeleaf:
     mode: LEGACYHTML5
 # mybatis mapper
 mybatis:
-  type-aliases-package: com.demo.boot.core.dao.entity
-  mapper-locations: classpath*:mapper/*.xml
+  mapper-locations: classpath:mapper/*/*.xml
   config-location: classpath:/mybatis-config.xml
 
 # log
@@ -27,3 +34,7 @@ logging:
   level:
     com.demo.boot.core.dao.mapper: debug
     org.springframework: info
+
+decrypt:
+  status: ${decrypt.status}
+  key: ${decrypt.key}

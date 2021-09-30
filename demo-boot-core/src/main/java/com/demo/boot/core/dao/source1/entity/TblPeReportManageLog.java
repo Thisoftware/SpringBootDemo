@@ -1,11 +1,11 @@
-package com.demo.boot.core.dao.entity;
+package com.demo.boot.core.dao.source1.entity;
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class TblPeReportManageLog{
+public class TblPeReportManageLog {
     private Long id;
 
     private String peReportManageStatus;
@@ -24,4 +24,4 @@ public class TblPeReportManageLog{
 
     private Date updateTime;
 
-   }
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.demo.boot.core.dao.mapper.TblPeReportManageLogMapper">
-  <resultMap id="BaseResultMap" type="com.demo.boot.core.dao.entity.TblPeReportManageLog">
+<mapper namespace="com.demo.boot.core.dao.source1.mapper.TblPeReportManageLogMapper">
+  <resultMap id="BaseResultMap" type="com.demo.boot.core.dao.source1.entity.TblPeReportManageLog">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="pe_report_manage_status" jdbcType="VARCHAR" property="peReportManageStatus" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />

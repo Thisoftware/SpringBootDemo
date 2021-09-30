@@ -6,15 +6,13 @@ import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.BaseTest;
 import com.demo.boot.core.client.MethodExecClient;
-import com.demo.boot.core.dao.entity.TblPeReportManageLog;
-import com.demo.boot.core.dao.mapper.TblPeReportManageLogMapper;
+import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
+import com.demo.boot.core.dao.source1.mapper.TblPeReportManageLogMapper;
 import com.demo.boot.core.service.TestService;
 import com.demo.boot.core.util.SpringContextUtil;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -48,11 +46,10 @@ public class ServiceTest extends BaseTest {
 
     @Test
     public void testPa(){
-        Example example = new Example(TblPeReportManageLog.class);
-        Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("userId", "sob5187");
-        criteria.andEqualTo("peReportManageStatus", "6");
-        List<TblPeReportManageLog> list = manageLogMapper.selectByCondition(example);
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_id", "sob5187");
+        map.put("pe_report_manage_status", "6");
+        List<TblPeReportManageLog> list = manageLogMapper.selectByMap(map);
         System.out.println(list);
     }
 

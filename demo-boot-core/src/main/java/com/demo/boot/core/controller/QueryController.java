@@ -6,7 +6,7 @@ import com.demo.boot.api.enums.ErrorCodeEnum;
 import com.demo.boot.api.exception.ApiCommonException;
 import com.demo.boot.api.path.BaseUrl;
 import com.demo.boot.api.vo.request.QueryLogRequest;
-import com.demo.boot.core.dao.entity.TblPeReportManageLog;
+import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
 import com.demo.boot.core.service.TestService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;

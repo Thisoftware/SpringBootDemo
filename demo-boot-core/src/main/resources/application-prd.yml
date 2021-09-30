@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+spring:
+  datasource:
+    druid:
+      source1:
+        username: root
+        password: EL0ElrYdRbWd51tQAVonVw==
+      source2:
+        username: root
+        password: vNJuVT6xfh0b0oEp4RLanw==
+
+decrypt:
+  status: true
+  key: key

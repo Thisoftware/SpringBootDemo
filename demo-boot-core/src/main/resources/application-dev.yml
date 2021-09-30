@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    druid:
+      source1:
+        username: root
+        password: 123456
+      source2:
+        username: root
+        password: 123456
+
+decrypt:
+  status: fales
+  key:

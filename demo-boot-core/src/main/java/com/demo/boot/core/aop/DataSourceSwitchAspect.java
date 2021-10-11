@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class DataSourceSwitchAspect {
 
-    @Pointcut("execution(* com.demo.boot.core.dao.source1..*.*(..))")
+    @Pointcut("execution(* com.demo.boot.core.dao.source1.mapper..*.*(..))")
     private void source1Aspect() {
     }
 
-    @Pointcut("execution(* com.demo.boot.core.dao.source2..*.*(..))")
+    @Pointcut("execution(* com.demo.boot.core.dao.source2.mapper..*.*(..))")
     private void source2Aspect() {
     }
 

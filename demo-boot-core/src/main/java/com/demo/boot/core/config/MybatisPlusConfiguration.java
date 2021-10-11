@@ -75,7 +75,7 @@ public class MybatisPlusConfiguration {
         MybatisConfiguration configuration = new MybatisConfiguration();
         configuration.setJdbcTypeForNull(JdbcType.NULL);
         configuration.setMapUnderscoreToCamelCase(true);
-        configuration.setCacheEnabled(false);
+        configuration.setCacheEnabled(true);
         sqlSessionFactory.setConfiguration(configuration);
         //添加插件功能
         //sqlSessionFactory.setPlugins(paginationInterceptor());

@@ -3,6 +3,7 @@ package com.demo.boot.core.aop;
 import com.demo.boot.api.enums.DataSourceTypeEnum;
 import com.demo.boot.core.config.DataSourceContextHolder;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -34,8 +35,9 @@ public class DataSourceSwitchAspect {
         DataSourceContextHolder.setDataSourceType(DataSourceTypeEnum.DATA_SOURCE2);
     }
 
-//    @After("source1Aspect() || source2Aspect()")
-//    public void afterSwitchDataSource(){
-//        DataSourceContextHolder.clearDataSourceType();
-//    }
+    @After("source1Aspect() || source2Aspect()")
+    public void afterSwitchDataSource(){
+        DataSourceContextHolder.clearDataSourceType();
+    }
+
 }

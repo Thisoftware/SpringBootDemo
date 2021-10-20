@@ -20,7 +20,7 @@ public enum ErrorCodeEnum {
         this.message = message;
     }
 
-    public static ErrorCodeEnum getErrorCodeByCode(String code) throws ApiCommonException {
+    public static ErrorCodeEnum getErrorCodeByCode(String code) {
         ErrorCodeEnum[] enums = values();
         for (ErrorCodeEnum constant : enums) {
             if (constant.getCode().equals(code)) {

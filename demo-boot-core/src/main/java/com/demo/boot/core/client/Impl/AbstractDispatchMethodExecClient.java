@@ -10,7 +10,7 @@ import java.util.Map;
 public abstract class AbstractDispatchMethodExecClient implements DispatchMethodExecClient {
 
     @Override
-    public Map<String, Object> exec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> methodExecute) throws ApiCommonException {
+    public Map<String, Object> exec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> methodExecute) {
         Map<String, Object> requestParameters = this.assembleRequest(methodExecute);
         log.info("【{}】组装请求, {}, {}", targetService, method, requestParameters);
 

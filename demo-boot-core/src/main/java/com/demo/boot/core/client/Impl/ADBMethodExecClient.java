@@ -18,7 +18,7 @@ public class ADBMethodExecClient extends ADispatchMethodExecClient{
     }
 
     @Override
-    public Map<String, Object> exec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> methodExecute) throws ApiCommonException {
+    public Map<String, Object> exec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> methodExecute) {
         if(targetService.get("type").equals("bat")){
             targetService.putAll(method);
             targetService.putAll(methodExecute);

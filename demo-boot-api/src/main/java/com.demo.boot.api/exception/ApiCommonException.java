@@ -10,7 +10,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Data
-public class ApiCommonException extends Exception{
+public class ApiCommonException extends RuntimeException{
 
     private String message;
 

@@ -20,7 +20,7 @@ public class ADispatchMethodExecClient extends AbstractDispatchMethodExecClient{
     }
 
     @Override
-    public Map<String, Object> doExec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> parameters) throws ApiCommonException {
+    public Map<String, Object> doExec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> parameters) {
         log.info("this location at ADispatchMethodExecClient_doExec");
         return null;
     }

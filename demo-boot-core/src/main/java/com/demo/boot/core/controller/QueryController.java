@@ -36,7 +36,7 @@ public class QueryController {
     @ApiOperation(value = "日志列表查询", notes = "日志列表查询")
     @PostMapping(value = BaseUrl.QUERY_LOG)
     @Timer
-    public ReData<List<TblPeReportManageLog>> queryLog(@RequestBody QueryLogRequest request) throws ApiCommonException {
+    public ReData<List<TblPeReportManageLog>> queryLog(@RequestBody QueryLogRequest request) {
         if(StringUtils.isBlank(request.getId())){
             throw new ApiCommonException(ErrorCodeEnum.REQUEST_PARAM_NULL_KEY);
         }

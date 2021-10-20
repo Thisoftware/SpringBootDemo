@@ -1,7 +1,6 @@
 package com.demo.boot.core.client.Impl;
 
 import com.alibaba.fastjson.JSON;
-import com.demo.boot.api.exception.ApiCommonException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +17,7 @@ public class ADAMethodExecClient extends ADispatchMethodExecClient{
     }
 
     @Override
-    public Map<String, Object> doExec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> parameters) throws ApiCommonException {
+    public Map<String, Object> doExec(Map<String, Object> targetService, Map<String, Object> method, Map<String, Object> parameters) {
         log.info("this location at AMethodExecClient_doExec");
         parameters.putAll(targetService);
         parameters.putAll(method);

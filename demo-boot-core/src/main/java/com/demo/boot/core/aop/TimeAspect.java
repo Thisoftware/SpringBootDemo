@@ -41,7 +41,7 @@ public class TimeAspect {
         MethodSignature signature= (MethodSignature) joinPoint.getSignature();
         Annotation[][] parameterAnnotations = signature.getMethod().getParameterAnnotations();
 
-        if (parameterAnnotations != null && parameterAnnotations.length > 0) {
+        if (parameterAnnotations.length > 0) {
             for (Annotation[] parameterAnnotation : parameterAnnotations) {
                 int paramIndex = ArrayUtils.indexOf(parameterAnnotations, parameterAnnotation);
                 for (Annotation annotation : parameterAnnotation) {

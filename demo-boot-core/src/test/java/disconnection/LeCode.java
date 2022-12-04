@@ -1,14 +1,7 @@
 package disconnection;
 
-import io.swagger.models.auth.In;
-import org.apache.commons.lang3.RandomUtils;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.swing.tree.TreeNode;
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class LeCode {
@@ -121,6 +114,11 @@ public class LeCode {
 //        }
 //        return right-left-1;
         /**
+         * 无重复字符的最长子串
+         */
+//        String s = "pwwkew";
+//        System.out.println(lengthOfLongestSubstring(s));
+        /**
          * 字符串逆序
          */
 //        String str = "I am a student";
@@ -162,7 +160,7 @@ public class LeCode {
         /**
          * 两数之和
          */
-//        int[] nums = {2,7,11,15};
+//        int[] nums = {2,7,2,7};
 //        int target = 9;
 //        Map<Integer, Integer> map = new HashMap<>();
 //        for(int i = 0; i< nums.length; i++) {
@@ -171,7 +169,6 @@ public class LeCode {
 //            }
 //            map.put(nums[i], i);
 //        }
-//        throw new IllegalArgumentException("No two sum solution");
         /**
          * 字符串排序，不分大小写，非英文字母放在原位
          */
@@ -288,18 +285,276 @@ public class LeCode {
          * 堆排序
          * 左节点=2*i+1，右节点=2*i+2，父节点=(i-1)/2；（i为下标）
          */
-//        int[] arr = {3,7,3,6,8,5,4,2,1};
-//        heapInsert(arr, 1);
-//        System.out.println(Arrays.toString(arr));
+        int[] arr = {3,7,3,6,8,5,4,2,1};
+        heapInsert(arr, 1);
+        System.out.println(Arrays.toString(arr));
         /**
          * 组合总数/木板拼接问题
          */
-        int[] arr = {2,2,2,2,2,3,3,3,3,3,5,5,5,5,5};
-        Arrays.sort(arr);
-        List<Integer> path = new ArrayList<>();
-        backtrack(path,arr,16,0,0);
-        System.out.println(res);
-        System.out.println(res.size() + "种解法");
+//        int[] arr = {2,2,2,2,2,3,3,3,3,3,5,5,5,5,5};
+//        Arrays.sort(arr);
+//        List<Integer> path = new ArrayList<>();
+//        backtrack(path,arr,16,0,0);
+//        System.out.println(res);
+//        System.out.println(res.size() + "种解法");
+        /**
+         * 全排列
+         */
+//        int[] nums = {1,2,3};
+//        List<Integer> output = new ArrayList<>();
+//        for (int num : nums) {
+//            output.add(num);
+//        }
+//        backtrack(nums.length, output, res, 0);
+//        System.out.println(res);
+        /**
+         * 组合总和
+         */
+//        int[] nums = {2,3,5};
+//        List<Integer> combine = new ArrayList<>();
+//        dfs(nums, 8, res, combine, 0);
+//        System.out.println(res);
+        /**
+         * 爬楼梯
+         */
+        //System.out.println(climbStairs(5));
+        /**
+         * 斐波那契数列
+         */
+//        for (int i = 0; i < 20; i++){
+//            System.out.println(fibonacci(i));
+//        }
+        /**
+         * 移动零
+         */
+//        int[] nums = {0,1,0,3,12};
+//        moveZero(nums);
+//        System.out.println(Arrays.toString(nums));
+        /**
+         * 合并两个有序数组
+         */
+//        int[] num1 = {1,2,3,0,0,0}, num2 = {2,5,6};
+//        int m = 3 ,n = 3;
+//        merge(num1, m, num2, n);
+//        System.out.println(Arrays.toString(num1));
+        /**
+         * 找到数组中消失的数字
+         */
+//        int[] nums = {4,3,2,7,8,2,3,1};
+//        System.out.println(findDisappearedNumbers(nums));
+        /**
+         * 合并两个有序链表
+         */
+//        LinkedList<Integer> list = new LinkedList<>();
+//        list.add(1);
+//        list.add(2);
+//        list.add(4);
+//        LinkedList<Integer> list1 = new LinkedList<>();
+//        list1.add(1);
+//        list1.add(3);
+//        list1.add(4);
+//        System.out.println(mergeTwoList(list, list1));
+        /**
+         * 杨辉三角
+         */
+//        System.out.println(generate(6));
+        /**
+         * 三数之和为0
+         */
+//        int[] nums = {-1,0,1,2,-1,-4};
+//        System.out.println(threeSum(nums));
+        /**
+         * 打家劫舍，隔一个数相加，选出最大值
+         */
+//        int[] nums = {2, 7, 9, 3, 1, 3};
+//        System.out.println(money(nums));
+    }
+
+    //打家劫舍
+    public int money(int[] nums){
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++){
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+        }
+        System.out.println(Arrays.toString(dp));
+        return dp[nums.length - 1];
+    }
+    //三数之和为0
+    public List<List<Integer>> threeSum(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        List<List<Integer>> ans = new ArrayList<>();
+        // 枚举 a
+        for (int first = 0; first < n; ++first) {
+            // 需要和上一次枚举的数不相同
+            if (first > 0 && nums[first] == nums[first - 1]) {
+                continue;
+            }
+            // c 对应的指针初始指向数组的最右端
+            int third = n - 1;
+            int target = -nums[first];
+            // 枚举 b
+            for (int second = first + 1; second < n; ++second) {
+                // 需要和上一次枚举的数不相同
+                if (second > first + 1 && nums[second] == nums[second - 1]) {
+                    continue;
+                }
+                // 需要保证 b 的指针在 c 的指针的左侧
+                while (second < third && nums[second] + nums[third] > target) {
+                    --third;
+                }
+                // 如果指针重合，随着 b 后续的增加
+                // 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
+                if (second == third) {
+                    break;
+                }
+                if (nums[second] + nums[third] == target) {
+                    List<Integer> list = new ArrayList<>();
+                    list.add(nums[first]);
+                    list.add(nums[second]);
+                    list.add(nums[third]);
+                    ans.add(list);
+                }
+            }
+        }
+        return ans;
+    }
+
+    //杨辉三角
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<>();
+        for (int i = 0; i < numRows; ++i) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 0; j <= i; ++j) {
+                if (j == 0 || j == i) {
+                    row.add(1);
+                } else {
+                    int a = ret.get(i - 1).get(j - 1);
+                    int b = ret.get(i - 1).get(j);
+                    row.add(a + b);
+                }
+            }
+            ret.add(row);
+        }
+        return ret;
+    }
+    //合并两个有序链表
+    public List<Integer> mergeTwoList(LinkedList<Integer> list, LinkedList<Integer> list1){
+        List<Integer> integerList = new LinkedList<>();
+        while (!list.isEmpty() && !list1.isEmpty()){
+            if (list.iterator().next() < list1.iterator().next()){
+                integerList.add(list.poll());
+            }else {
+                integerList.add(list1.poll());
+            }
+        }
+        if (!list.isEmpty()) {
+            integerList.add(list.poll());
+        }
+        if (!list1.isEmpty()) {
+            integerList.add(list1.poll());
+        }
+        return integerList;
+    }
+
+    //找到数组中消失的数字
+    public List<Integer> findDisappearedNumbers(int[] nums){
+        for (int i = 0; i < nums.length; i++){
+            int x = Math.abs(nums[i]) - 1;
+            nums[x] = -Math.abs(nums[x]);
+        }
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++){
+            if (nums[i] > 0){
+                result.add(i + 1);
+            }
+        }
+        return result;
+    }
+
+    //合并两个有序数组
+    public void merge (int[] nums1, int m, int[] nums2, int n){
+        int k = m + n;
+        for (int index = k - 1, nums1Index = m - 1, nums2Index = n - 1; index >= 0; index--){
+            if (nums1Index < 0){
+                nums1[index] = nums2[nums2Index--];
+            }else if (nums2Index < 0){
+                break;
+            }else if (nums1[nums1Index] > nums2[nums2Index]){
+                nums1[index] = nums1[nums1Index--];
+            }else {
+                nums1[index] = nums2[nums2Index--];
+            }
+        }
+    }
+    //移动零
+    public void moveZero(int[] nums){
+        if(nums == null || nums.length == 0){
+            return;
+        }
+        int insertPos = 0;
+        for (int num : nums){
+            if (num != 0){
+                nums[insertPos ++] = num;
+            }
+        }
+        while (insertPos < nums.length){
+            nums[insertPos++] = 0;
+        }
+    }
+    //斐波那契数列
+    public long fibonacci(long number){
+        if ((number == 0) || (number == 1)){
+            return number;
+        } else{
+            return fibonacci(number - 1) + fibonacci(number - 2);
+        }
+    }
+    //爬楼梯
+    public int climbStairs(int n) {
+        int p, q = 0, r = 1;
+        for (int i = 1; i <= n; ++i) {
+            p = q;
+            q = r;
+            r = p + q;
+        }
+        return r;
+    }
+    //组合总和
+    public void dfs(int[] candidates, int target, List<List<Integer>> ans, List<Integer> combine, int idx) {
+        if (idx == candidates.length) {
+            return;
+        }
+        if (target == 0) {
+            ans.add(new ArrayList<>(combine));
+            return;
+        }
+        // 直接跳过
+        dfs(candidates, target, ans, combine, idx + 1);
+        // 选择当前数
+        if (target - candidates[idx] >= 0) {
+            combine.add(candidates[idx]);
+            dfs(candidates, target - candidates[idx], ans, combine, idx);
+            combine.remove(combine.size() - 1);
+        }
+    }
+
+    //全排列
+    public void backtrack(int n, List<Integer> output, List<List<Integer>> res, int first) {
+        // 所有数都填完了
+        if (first == n) {
+            res.add(new ArrayList<>(output));
+        }
+        for (int i = first; i < n; i++) {
+            // 动态维护数组
+            Collections.swap(output, first, i);
+            // 继续递归填下一个数
+            backtrack(n, output, res, first + 1);
+            // 撤销操作
+            Collections.swap(output, first, i);
+        }
     }
 
     // 组合总数/木板拼接问题
@@ -369,6 +624,21 @@ public class LeCode {
         }
         return arr;
     }
+    //无重复字符的最长子串
+    public int lengthOfLongestSubstring(String s){
+        Map<Character, Integer> map = new HashMap<>();
+        int max = 0;
+
+        for (int i = 0, j = 0; j < s.length(); j++){
+            if(map.containsKey(s.charAt(j))){
+                i = Math.max(i, map.get(s.charAt(j)) + 1);
+            }
+            map.put(s.charAt(j), j);
+            max = Math.max(max, j - i + 1);
+        }
+        return max;
+    }
+
     //复制数组中的数
     public static int[] copyArray(int[] arr){
         if (arr == null){

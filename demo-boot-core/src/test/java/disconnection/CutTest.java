@@ -116,8 +116,7 @@ public class CutTest {
 //            baseResources.add(baseResource);
 //        });
 
-        System.out.println(baseResources);
-        log.info("[{}] -> test message of biConsumer", baseResources);
+        log.info("{} -> test message of biConsumer", baseResources);
     }
 
     private Collection<TestVo> commonCollection(){

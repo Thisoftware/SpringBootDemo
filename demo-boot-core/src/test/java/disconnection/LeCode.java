@@ -784,21 +784,4 @@ public class LeCode {
         }
     }
 
-    @Test
-    public void testYi(){
-        //取相反数
-        System.out.println(~5 + 1);
-        System.out.println(~-5 + 1);
-        //亦或加解密
-        System.out.println(encrypt("idmmn", 1));
-    }
-
-    //亦或加解密
-    public static String encrypt(String value, int secret){
-        byte[] bytes = value.getBytes();
-        for (int i = 0; i < bytes.length; i++){
-            bytes[i] = (byte) (bytes[i]^secret);
-        }
-        return new String(bytes, 0, bytes.length);
-    }
 }

@@ -2,6 +2,10 @@ server:
   port: ${server.port}
 
 spring:
+  application:
+    name: demo-boot
+  profiles:
+    active: dev
   datasource:
     druid:
       source1:

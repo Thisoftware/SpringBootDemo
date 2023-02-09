@@ -6,6 +6,7 @@ import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.BaseTest;
 import com.demo.boot.core.client.MethodExecClient;
+import com.demo.boot.core.client.requestImpl.RequestCounterManager;
 import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
 import com.demo.boot.core.dao.source1.mapper.TblPeReportManageLogMapper;
 import com.demo.boot.core.service.TestService;
@@ -29,6 +30,8 @@ public class ServiceTest extends BaseTest {
 
     @Resource
     private SpringContextUtil applicationContext;
+    @Resource
+    private RequestCounterManager requestCounterManager;
 
     @Test
     public void queryLog(){
@@ -78,5 +81,10 @@ public class ServiceTest extends BaseTest {
         methodExec.put("bME","methodExec");
         Map<String, Object> response = execClient.exec(targetService, method, methodExec);
         System.out.println(JSON.toJSONString(response));
+    }
+
+    @Test
+    public void testRequestCounter(){
+        System.out.println(requestCounterManager.getRequestCounter(3).count());
     }
 }

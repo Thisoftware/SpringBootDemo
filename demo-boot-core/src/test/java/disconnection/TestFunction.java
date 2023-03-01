@@ -153,13 +153,37 @@ public class TestFunction {
 
     @Test
     public void testTuple(){
-        Pair<Boolean, String> pair = new ImmutablePair<>(true, "bbb");
+        Pair<Boolean, String> pair = Pair.of(true, "bbb");
         System.out.println(pair);
 
         Triple<Boolean, String, List<String>> triple = new ImmutableTriple<>(false, "aa", Lists.newArrayList("a", "b"));
         System.out.println(triple.getLeft());
         System.out.println(triple.getMiddle());
         System.out.println(triple.getRight());
+    }
+
+    @Test
+    public void optional(){
+        TestVo testVo = new TestVo();
+        testVo.setCode("456");
+
+        Optional.ofNullable(testVo).ifPresent(p ->{
+            p.setInfo("bbb");
+            p.setData("ddd");
+            p.setNum(111);
+        });
+
+        System.out.println(Optional.ofNullable(testVo.getNum()).orElseGet(() -> new Random().nextInt()));
+
+        System.out.println(Optional.ofNullable(testVo.getNum()).orElse(1));
+
+        Optional.ofNullable(testVo.getInfo()).orElseThrow(() -> new RuntimeException("--------withdrawAuditRecord is not find, caseNumber："));
+
+        System.out.println(Optional.ofNullable(testVo).get());
+
+        System.out.println(Optional.of(testVo).get());
+
+        System.out.println(Optional.ofNullable(testVo).map(TestVo::getNum).orElse(0));
     }
 
 

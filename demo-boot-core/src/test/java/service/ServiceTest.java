@@ -1,6 +1,7 @@
 package service;
 
 import com.alibaba.fastjson.JSON;
+import com.demo.boot.api.enums.LimitTypeEnum;
 import com.demo.boot.api.exception.ApiCommonException;
 import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
@@ -86,5 +87,6 @@ public class ServiceTest extends BaseTest {
     @Test
     public void testRequestCounter(){
         System.out.println(requestCounterManager.getRequestCounter(3).count());
+        System.out.println(requestCounterManager.getRequestCounter(LimitTypeEnum.DAY.getDesc()).count());
     }
 }

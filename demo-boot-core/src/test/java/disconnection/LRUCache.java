@@ -5,10 +5,9 @@ import java.util.Map;
 
 public class LRUCache {
 
-    private int capacity;
-    private Map<Integer, ListNode> map; //key->node
-    private ListNode head;  // dummy head
-    private ListNode tail;  // dummy tail
+    private final int capacity;
+    private final Map<Integer, ListNode> map; //key->node
+    private final ListNode head, tail;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
@@ -59,7 +58,7 @@ public class LRUCache {
     }
 
     // 定义双向链表节点
-    private class ListNode {
+    private static class ListNode {
         int key;
         int val;
         ListNode pre;

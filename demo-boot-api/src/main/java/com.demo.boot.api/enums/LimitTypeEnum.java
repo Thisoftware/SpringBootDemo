@@ -12,15 +12,17 @@ import java.util.Arrays;
 @Getter
 public enum LimitTypeEnum {
 
-    DAY(1),
-    HOURS(2),
-    RELATED(3)
+    DAY(1, "cacheDay"),
+    HOURS(2, "cacheHours"),
+    RELATED(3, "cacheDayRelated")
     ;
 
     private int code;
+    private String desc;
 
-    LimitTypeEnum(int code){
+    LimitTypeEnum(int code, String desc){
         this.code = code;
+        this.desc = desc;
     }
 
     public static LimitTypeEnum getLimitTypeEnum(int limitType){

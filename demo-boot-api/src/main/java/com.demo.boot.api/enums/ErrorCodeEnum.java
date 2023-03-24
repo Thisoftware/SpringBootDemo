@@ -10,7 +10,9 @@ import java.util.List;
 public enum ErrorCodeEnum {
 
     REQUEST_PARAM_NULL_KEY("100001", "必传参数为空"),
-    ERROR_CODE_100002("100002", "请重新登录!");
+    ERROR_CODE_100002("100002", "请重新登录!"),
+    PARAM_IS_EMPTY("100003", "param is empty"),
+    ;
 
     private String code;
     private String message;

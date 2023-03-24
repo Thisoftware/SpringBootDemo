@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
@@ -16,11 +15,9 @@ public class ApiCommonException extends RuntimeException{
 
     private String code;
 
-    private Throwable cause;
-
-    private List<String> args;
-
-    private ErrorCodeEnum errorCodeEnum;
+    public ApiCommonException(Throwable cause) {
+        super(cause);
+    }
 
     public ApiCommonException(String message) {
         super(message);
@@ -34,12 +31,12 @@ public class ApiCommonException extends RuntimeException{
     }
 
     public ApiCommonException(ErrorCodeEnum errorCodeEnum) {
-        this(errorCodeEnum, errorCodeEnum.getCode(), errorCodeEnum.getMessage());
+        this(errorCodeEnum.getMessage());
+        this.code = errorCodeEnum.getCode();
     }
 
-    public ApiCommonException(ErrorCodeEnum errorCodeEnum, String code, String message) {
-        this.errorCodeEnum = errorCodeEnum;
-        this.code = code;
-        this.message = message;
+    public ApiCommonException(ErrorCodeEnum errorCodeEnum, String args) {
+        this(errorCodeEnum.getMessage() + ": " + args);
+        this.code = errorCodeEnum.getCode();
     }
 }

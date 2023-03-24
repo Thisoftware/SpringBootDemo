@@ -2,19 +2,17 @@ package com.demo.boot.core.controller;
 
 import com.demo.boot.api.annotation.Timer;
 import com.demo.boot.api.constants.ReData;
-import com.demo.boot.api.enums.ErrorCodeEnum;
-import com.demo.boot.api.exception.ApiCommonException;
 import com.demo.boot.api.path.BaseUrl;
 import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
 import com.demo.boot.core.dao.source2.entity.BaseResource;
 import com.demo.boot.core.service.TestService;
+import com.demo.boot.core.util.ValidateUtil;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,9 +35,7 @@ public class QueryController {
     @PostMapping(value = BaseUrl.QUERY_LOG)
     @Timer
     public ReData<List<TblPeReportManageLog>> queryLog(@RequestBody QueryLogRequest request) {
-        if(StringUtils.isBlank(request.getId())){
-            throw new ApiCommonException(ErrorCodeEnum.REQUEST_PARAM_NULL_KEY);
-        }
+        ValidateUtil.validateNotNull(request, QueryLogRequest::getId);
         ReData<List<TblPeReportManageLog>> response = new ReData<>();
         PageInfo<TblPeReportManageLog> pageInfo = testService.queryLog(request);
         response.pageData(pageInfo.getList(), pageInfo.getTotal());

@@ -24,7 +24,7 @@ public class GlobalExceptionResolver {
 
     @ExceptionHandler(value = Exception.class)
     public ReData<String> exceptionHandler(Exception e){
-        log.error("##异常原因:" + ExceptionUtils.getStackTrace(e));
+        log.error("##异常原因: response: {}", ExceptionUtils.getStackTrace(e));
         ReData<String> reData = new ReData<>();
         if(e instanceof ApiCommonException){
             ApiCommonException ex = (ApiCommonException) e;
@@ -43,7 +43,7 @@ public class GlobalExceptionResolver {
         } else {
             ReCode.SystemError.setResponse(reData);
         }
-        log.info("##异常返回:response={}", JSON.toJSONString(reData));
+        log.info("##异常返回: response: {}", JSON.toJSONString(reData));
         return reData;
     }
 }

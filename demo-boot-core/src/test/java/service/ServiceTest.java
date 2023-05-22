@@ -7,7 +7,7 @@ import com.demo.boot.api.vo.request.QueryLogRequest;
 import com.demo.boot.api.vo.response.QueryLogResponse;
 import com.demo.boot.core.BaseTest;
 import com.demo.boot.core.client.MethodExecClient;
-import com.demo.boot.core.client.requestImpl.RequestCounterManager;
+import com.demo.boot.core.client.RequestCounter;
 import com.demo.boot.core.dao.source1.entity.TblPeReportManageLog;
 import com.demo.boot.core.dao.source1.mapper.TblPeReportManageLogMapper;
 import com.demo.boot.core.service.TestService;
@@ -31,8 +31,9 @@ public class ServiceTest extends BaseTest {
 
     @Resource
     private SpringContextUtil applicationContext;
+
     @Resource
-    private RequestCounterManager requestCounterManager;
+    private List<RequestCounter> requestCounters;
 
     @Test
     public void queryLog(){
@@ -86,7 +87,7 @@ public class ServiceTest extends BaseTest {
 
     @Test
     public void testRequestCounter(){
-        System.out.println(requestCounterManager.getRequestCounter(3).count());
-        System.out.println(requestCounterManager.getRequestCounter(LimitTypeEnum.DAY.getDesc()).count());
+//        System.out.println(requestCounterManager.getRequestCounter(LimitTypeEnum.DAY.getDesc()).count());
+        requestCounters.stream().filter(o -> o.count() == LimitTypeEnum.DAY.getCode()).findFirst().ifPresent(i -> System.out.println(i.buildParam()));
     }
 }

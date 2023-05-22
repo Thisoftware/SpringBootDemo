@@ -20,19 +20,7 @@ import java.util.Map;
 public class RequestCounterManager {
 
     @Resource
-    private List<RequestCounter> requestCounters;
-
-    @Resource
     private Map<String, RequestCounter> dispatchMethodExecClientMap;
-
-    public RequestCounter getRequestCounter(int code){
-        for (RequestCounter requestCounter : requestCounters){
-            if (requestCounter.getLimitTypeEnum() == LimitTypeEnum.getLimitTypeEnum(code)){
-                return requestCounter;
-            }
-        }
-        throw new ApiCommonException("No Matched Request Counter Found");
-    }
 
     public RequestCounter getRequestCounter(String type){
         String methodName = type + RequestCounter.class.getSimpleName();

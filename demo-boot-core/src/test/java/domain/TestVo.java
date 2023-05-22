@@ -13,6 +13,7 @@ public class TestVo {
     private String data;
     private Integer num;
     private Boolean flag;
+    private List<Integer> list;
     private List<Contact> contactList;
     private CreditInfo creditInfo;
 

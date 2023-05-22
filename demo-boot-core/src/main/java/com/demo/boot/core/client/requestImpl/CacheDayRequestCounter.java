@@ -8,19 +8,9 @@ import org.springframework.stereotype.Component;
  * @since 2023/02/06 18:04:09
  */
 @Component
-public class CacheDayRequestCounter extends AbstractCacheRequestCounter{
+public class CacheDayRequestCounter extends AbstractCacheDayRequestCounter{
     @Override
     public int count() {
         return LimitTypeEnum.DAY.getCode();
-    }
-
-    @Override
-    public LimitTypeEnum getLimitTypeEnum() {
-        return LimitTypeEnum.DAY;
-    }
-
-    @Override
-    protected String getKey(String bizType) {
-        return bizType;
     }
 }

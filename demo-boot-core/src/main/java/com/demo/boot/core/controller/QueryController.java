@@ -36,28 +36,22 @@ public class QueryController {
     @Timer
     public ReData<List<TblPeReportManageLog>> queryLog(@RequestBody QueryLogRequest request) {
         ValidateUtil.validateNotNull(request, QueryLogRequest::getId);
-        ReData<List<TblPeReportManageLog>> response = new ReData<>();
         PageInfo<TblPeReportManageLog> pageInfo = testService.queryLog(request);
-        response.pageData(pageInfo.getList(), pageInfo.getTotal());
-        return response;
+        return ReData.success(pageInfo.getTotal(), pageInfo.getList());
     }
 
     @ApiOperation(value = "字典列表查询", notes = "字典列表查询")
     @PostMapping(value = BaseUrl.QUERY_RESOURCE)
     @Timer
     public ReData<List<BaseResource>> queryResource(@RequestBody QueryLogRequest request){
-        ReData<List<BaseResource>> reData = new ReData<>();
         PageInfo<BaseResource> pageInfo = testService.queryResource(request);
-        reData.pageData(pageInfo.getList(), pageInfo.getTotal());
-        return reData;
+        return ReData.success(pageInfo.getTotal(), pageInfo.getList());
     }
 
     @ApiOperation(value = "客户查询", notes = "客户查询")
     @PostMapping(value = BaseUrl.QUERY_CUS_REPORT)
     @Timer
     public ReData<List<QueryLogResponse>> queryCusReportLog(@RequestBody QueryLogRequest request){
-        ReData<List<QueryLogResponse>> reData = new ReData<>();
-        reData.setData(testService.queryCusReportLog(request));
-        return reData;
+        return ReData.success(testService.queryCusReportLog(request));
     }
 }

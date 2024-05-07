@@ -7,7 +7,7 @@ public enum DataSourceTypeEnum {
     DATA_SOURCE1("source1"),
     DATA_SOURCE2("source2");
 
-    private String code;
+    private final String code;
 
     DataSourceTypeEnum(String code){
         this.code = code;

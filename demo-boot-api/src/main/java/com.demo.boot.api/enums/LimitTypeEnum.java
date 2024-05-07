@@ -17,8 +17,8 @@ public enum LimitTypeEnum {
     RELATED(3, "cacheDayRelated")
     ;
 
-    private int code;
-    private String desc;
+    private final int code;
+    private final String desc;
 
     LimitTypeEnum(int code, String desc){
         this.code = code;

@@ -32,7 +32,6 @@ public class CaptchaUtil {
      * 使用系统默认字符源生成验证码
      *
      * @param verifySize 验证码长度
-     * @return
      */
     public static String generateVerifyCode(int verifySize) {
         return generateVerifyCode(verifySize, VERIFY_CODES);
@@ -43,10 +42,9 @@ public class CaptchaUtil {
      *
      * @param verifySize 验证码长度
      * @param sources    验证码字符源
-     * @return
      */
     public static String generateVerifyCode(int verifySize, String sources) {
-        if (sources == null || sources.length() == 0) {
+        if (sources == null || sources.isEmpty()) {
             sources = VERIFY_CODES;
         }
         int codesLen = sources.length();
@@ -60,13 +58,6 @@ public class CaptchaUtil {
 
     /**
      * 生成随机验证码文件,并返回验证码值
-     *
-     * @param w
-     * @param h
-     * @param outputFile
-     * @param verifySize
-     * @return
-     * @throws IOException
      */
     public static String outputVerifyImage(int w, int h, File outputFile, int verifySize) throws IOException {
         String verifyCode = generateVerifyCode(verifySize);
@@ -76,13 +67,6 @@ public class CaptchaUtil {
 
     /**
      * 输出随机验证码图片流,并返回验证码值
-     *
-     * @param w
-     * @param h
-     * @param os
-     * @param verifySize
-     * @return
-     * @throws IOException
      */
     public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize) throws IOException {
         String verifyCode = generateVerifyCode(verifySize);
@@ -92,12 +76,6 @@ public class CaptchaUtil {
 
     /**
      * 生成指定验证码图像文件
-     *
-     * @param w
-     * @param h
-     * @param outputFile
-     * @param code
-     * @throws IOException
      */
     public static void outputImage(int w, int h, File outputFile, String code) throws IOException {
         if (outputFile == null) {
@@ -119,12 +97,6 @@ public class CaptchaUtil {
 
     /**
      * 输出指定验证码图片流
-     *
-     * @param w
-     * @param h
-     * @param os
-     * @param code
-     * @throws IOException
      */
     public static void outputImage(int w, int h, OutputStream os, String code) throws IOException {
         int verifySize = code.length();
@@ -180,7 +152,7 @@ public class CaptchaUtil {
         char[] chars = code.toCharArray();
         for (int i = 0; i < verifySize; i++) {
             AffineTransform affine = new AffineTransform();
-            affine.setToRotation(Math.PI / 4 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize / 2, h / 2);
+            affine.setToRotation(Math.PI / 4 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), ((double) w / verifySize) * i + (double) fontSize / 2, (double) h / 2);
             g2.setTransform(affine);
             g2.drawChars(chars, i, 1, ((w - 10) / verifySize) * i + 5, h / 2 + fontSize / 2 - 10);
         }
@@ -233,7 +205,7 @@ public class CaptchaUtil {
         int phase = random.nextInt(2);
 
         for (int i = 0; i < h1; i++) {
-            double d = (double) (period >> 1)
+            double d = (double) (0)
                     * Math.sin((double) i / (double) period
                     + (6.2831853071795862D * (double) phase)
                     / (double) frames);

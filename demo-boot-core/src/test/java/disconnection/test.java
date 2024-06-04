@@ -1,5 +1,6 @@
 package disconnection;
 
+import observer.HandleObservable;
 import org.junit.Test;
 
 import java.util.*;
@@ -59,6 +60,9 @@ public class test {
 
     @Test
     public void tt(){
-
+        HandleObservable handleObservable = new HandleObservable();
+        handleObservable.addObserver(new observer.ServiceObserver());
+        handleObservable.addObserver(new observer.ProxyObserver());
+        handleObservable.handle("hello");
     }
 }
